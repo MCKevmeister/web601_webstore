@@ -167,7 +167,7 @@ insert into Payment (`CustomerID`, `PaymentDate`, `Amount`) values
 -- ~~~~~~~~~~~~~~~~~~~
 -- Product Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Product (`CategoryID`, `LastModifiedBy`, `Name`, `Manufacturer`, `Description`, `QtyInStock`, `Price`, `MSRP`, `Image`, `LastModifiedDate`, `IsAvailable`) values 
+insert into Product (`CategoryID`, `LastModifiedBy`, `Name`, `Manufacturer`, `Description`, `QtyInStock`, `Price`, `MSRP`, `Image`, `LastModifiedDate`, `IsAvailable`) values
 (4, 4, 'pulvinar', 'nascetur', 'proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis', 7, 79.24, 47.82, 'http://dummyimage.com/155x100.png/ff4444/ffffff', '2021-01-28', 1),
 (9, 8, 'iaculis','diam', 'parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum', 14, 70.37, 80.78, 'http://dummyimage.com/100x100.png/ff4444/ffffff', '2021-03-16', 1),
 (8, 5, 'blandit', 'curae', 'nunc rhoncus dui vel sem sed sagittis nam congue risus', 18, 76.71, 52.9, 'http://dummyimage.com/240x100.png/dddddd/000000', '2020-09-09', 1),
