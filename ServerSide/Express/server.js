@@ -16,6 +16,11 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const db = require("./app/models");
+db.sequelize.sync().then(() => {
+    console.log ("Sync with DB")
+})
+
 // simple route
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to Webstore application." });
