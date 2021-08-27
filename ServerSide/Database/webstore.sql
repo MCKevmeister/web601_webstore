@@ -11,7 +11,7 @@ CREATE PROCEDURE makeWebstoreDB()
 	BEGIN
     CREATE TABLE `Category` (
       `ID`              int NOT NULL AUTO_INCREMENT,
-      `CategoryName` char(255),
+      `CategoryName`    varchar(255),
       `Description`     varchar(255),
       `Image`           varchar(100),
       PRIMARY KEY (ID));
@@ -51,7 +51,7 @@ CREATE PROCEDURE makeWebstoreDB()
       `PersonID` int NOT NULL,
       PRIMARY KEY (ID));
     CREATE TABLE Order_Product (
-      `OrderID`   int NOT NULL,
+      `ID`        int NOT NULL AUTO_INCREMENT,
       `ProductID` int NOT NULL,
       `Qty`       int NOT NULL,
       `PriceEach` decimal(13, 2) NOT NULL,
