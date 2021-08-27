@@ -1,46 +1,46 @@
 module.exports = (sequelize, Sequelize) => {
     return sequelize.define ( "product", {
-        ProductID: {
-            type: Sequelize.INTEGER,
+        ID: {
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
         CategoryID: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         LastModifiedBy: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         Name: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         Manufacturer: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         Description: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         QtyInStock: {
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
         Price: {
-            type: Sequelize.DECIMAL ( 13, 2 )
+            type: DataTypes.DECIMAL ( 13, 2 )
         },
         MSRP: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         Image: {
-            type: Sequelize.STRING ( 100 )
+            type: DataTypes.STRING ( 100 )
         },
         LastModifiedDate: {
-            type: Sequelize.DATEONLY,
+            type: DataTypes.DATEONLY,
             allowNull: false
         },
         IsAvailable: {
-            type: Sequelize.BOOLEAN,
+            type: DataTypes.BOOLEAN,
             allowNull: false
         }
     } );
