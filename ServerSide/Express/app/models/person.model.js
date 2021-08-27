@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    return sequelize.define ( "Order", {
+    return sequelize.define ( "Person", {
         ID: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -11,14 +11,14 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             references: {
                 model: Customer,
-                key: 'ID',
+                key: 'ID'
             }
         },
         PaymentID: {
             type: DataTypes.STRING,
             references: {
                 model: Payment,
-                key: 'ID',
+                key: 'ID'
             }
         },
         Status: {

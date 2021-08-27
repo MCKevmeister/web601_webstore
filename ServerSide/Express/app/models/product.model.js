@@ -8,11 +8,19 @@ module.exports = (sequelize, Sequelize) => {
         },
         CategoryID: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: Category,
+                key: 'ID'
+            }
         },
         LastModifiedBy: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: Employee,
+                key: 'ID'
+            }
         },
         Name: {
             type: DataTypes.STRING
