@@ -1,11 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
     return sequelize.define ( "product", {
+        ProductID: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
         CategoryID: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
         LastModifiedBy: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false
         },
         Name: {
@@ -30,7 +36,8 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING ( 100 )
         },
         LastModifiedDate: {
-            type: Sequelize.DATEONLY
+            type: Sequelize.DATEONLY,
+            allowNull: false
         },
         IsAvailable: {
             type: Sequelize.BOOLEAN,
