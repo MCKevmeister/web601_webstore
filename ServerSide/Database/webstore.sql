@@ -9,79 +9,77 @@ DROP PROCEDURE IF EXISTS makeWebstoreDB;
 DELIMITER //
 CREATE PROCEDURE makeWebstoreDB()
 	BEGIN
-    CREATE TABLE `Category` (
-      `ID`              int NOT NULL AUTO_INCREMENT,
-      `CategoryName`    varchar(255),
-      `Description`     varchar(255),
-      `Image`           varchar(100),
-      PRIMARY KEY (ID));
-    CREATE TABLE `Product` (
-      `ID`               int NOT NULL AUTO_INCREMENT,
-      `CategoryID`       int NOT NULL,
-      `LastModifiedBy`   int NOT NULL,
-      `Name`             varchar(255),
-      `Manufacturer`     varchar(255),
-      `Description`      varchar(255),
-      `QtyInStock`       int,
-      `Price`            decimal(13, 2),
-      `MSRP`             varchar(255),
-      `Image`            varchar(100),
-      `LastModifiedDate` date NOT NULL,
-      `IsAvailable`      tinyint(1) NOT NULL,
-      PRIMARY KEY (ID));
+    CREATE TABLE Category (
+        CategoryID   int(10) NOT NULL AUTO_INCREMENT,
+        CategoryName char(255),
+        Description  varchar(255),
+        Image        varchar(100),
+        PRIMARY KEY (CategoryID));
+    CREATE TABLE Product (
+        ProductID        int(10) NOT NULL AUTO_INCREMENT,
+        CategoryID       int(10) NOT NULL,
+        LastModifiedBy   int(10) NOT NULL,
+        Name             varchar(255),
+        Manufacturer     varchar(255),
+        Description      varchar(255),
+        QtyInStock       int(10),
+        Price            decimal(13, 2),
+        MSRP             varchar(255),
+        Image            varchar(100),
+        LastModifiedDate date NOT NULL,
+        IsAvailable      tinyint(1) NOT NULL,
+        PRIMARY KEY (ProductID));
     CREATE TABLE `Order` (
-      `ID`             int NOT NULL AUTO_INCREMENT,
-      `CustomerID`     int NOT NULL,
-      `PaymentID`      int,
-      `Status`         varchar(255) NOT NULL,
-      `OrderDate`      date,
-      `ShippedDate`    date,
-      `Comments`       varchar(255),
-      `TrackingNumber` varchar(255),
-      `IsDeleted`      tinyint(1) NOT NULL,
-      PRIMARY KEY (ID));
-    CREATE TABLE `Payment` (
-      `ID`          int NOT NULL AUTO_INCREMENT,
-      `CustomerID`  int NOT NULL,
-      `PaymentDate` date,
-      `Amount`      decimal(13, 2),
-      PRIMARY KEY (ID));
+        OrderID        int(10) NOT NULL AUTO_INCREMENT,
+        CustomerID     int(10) NOT NULL,
+        PaymentID      int(10),
+        Status         varchar(255) NOT NULL,
+        OrderDate      date,
+        ShippedDate    date,
+        Comments       varchar(255),
+        TrackingNumber varchar(255),
+        IsDeleted      tinyint(1) NOT NULL,
+        PRIMARY KEY (OrderID));
+    CREATE TABLE Payment (
+        PaymentID   int(10) NOT NULL AUTO_INCREMENT,
+        CustomerID  int(10) NOT NULL,
+        PaymentDate date,
+        Amount      decimal(13, 2),
+        PRIMARY KEY (PaymentID));
     CREATE TABLE Customer (
-      `ID`       int NOT NULL AUTO_INCREMENT,
-      `PersonID` int NOT NULL,
-      PRIMARY KEY (ID));
+        CustomerID int(10) NOT NULL AUTO_INCREMENT,
+        PersonID   int(10) NOT NULL,
+        PRIMARY KEY (CustomerID));
     CREATE TABLE Order_Product (
-      `ID`        int NOT NULL AUTO_INCREMENT,
-      `ProductID` int NOT NULL,
-      `Qty`       int NOT NULL,
-      `PriceEach` decimal(13, 2) NOT NULL,
-      PRIMARY KEY (OrderID,
-      ProductID));
+        OrderID   int(10) NOT NULL,
+        ProductID int(10) NOT NULL,
+        Qty       int(10) NOT NULL,
+        PriceEach decimal(13, 2) NOT NULL,
+        PRIMARY KEY (OrderID, ProductID));
     CREATE TABLE Employee (
-      `ID`       int NOT NULL AUTO_INCREMENT,
-      `PersonID` int NOT NULL,
-      `Role`     char(255),
-      PRIMARY KEY (ID));
+        EmployeeID int(10) NOT NULL AUTO_INCREMENT,
+        PersonID   int(10) NOT NULL,
+        Role       varchar(255),
+      PRIMARY KEY (EmployeeID));
     CREATE TABLE Person (
-      `ID`        int NOT NULL AUTO_INCREMENT,
-      `FirstName` varchar(255) NOT NULL,
-      `LastName`  varchar(255) NOT NULL,
-      `Email`     char(100) NOT NULL,
-      `Phone`     varchar(255),
-      `Address`   varchar(255),
-      `City`      varchar(255),
-      `PostCode`  int,
-      PRIMARY KEY (ID));
-    ALTER TABLE `Payment` ADD CONSTRAINT FKPayment75777 FOREIGN KEY (`CustomerID`) REFERENCES Customer (`ID`);
-    ALTER TABLE `Order` ADD CONSTRAINT FKOrder556711 FOREIGN KEY (`CustomerID`) REFERENCES Customer (`ID`);
-    ALTER TABLE `Order_Product` ADD CONSTRAINT FKOrder_Prod922282 FOREIGN KEY (`OrderID`) REFERENCES `Order` (`ID`);
-    ALTER TABLE `Order_Product` ADD CONSTRAINT FKOrder_Prod600571 FOREIGN KEY (`ProductID`) REFERENCES Product (`ID`);
-    ALTER TABLE `Product` ADD CONSTRAINT FKProduct65612 FOREIGN KEY (`CategoryID`) REFERENCES Category (`ID`);
-    ALTER TABLE `Customer` ADD CONSTRAINT FKCustomer220859 FOREIGN KEY (`PersonID`) REFERENCES Person (`ID`);
-    ALTER TABLE `Employee` ADD CONSTRAINT FKEmployee925855 FOREIGN KEY (`PersonID`) REFERENCES Person (`ID`);
-    ALTER TABLE `Product` ADD CONSTRAINT FKProduct450223 FOREIGN KEY (`LastModifiedBy`) REFERENCES Employee (`ID`);
-    ALTER TABLE `Order` ADD CONSTRAINT FKOrder92191 FOREIGN KEY (`PaymentID`) REFERENCES Payment (`ID`);
-
+        PersonID  int(10) NOT NULL AUTO_INCREMENT,
+        FirstName varchar(255) NOT NULL,
+        LastName  varchar(255) NOT NULL,
+        Email     varchar(255) NOT NULL,
+        Phone     varchar(255),
+        Address   varchar(255),
+        City      varchar(255),
+        PostCode  int(4),
+        PRIMARY KEY (PersonID));
+    ALTER TABLE Payment ADD CONSTRAINT FKPayment617515 FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID);
+    ALTER TABLE `Order` ADD CONSTRAINT FKOrder835009 FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID);
+    ALTER TABLE Order_Product ADD CONSTRAINT FKOrder_Prod381299 FOREIGN KEY (OrderID) REFERENCES `Order` (OrderID);
+    ALTER TABLE Order_Product ADD CONSTRAINT FKOrder_Prod535307 FOREIGN KEY (ProductID) REFERENCES Product (ProductID);
+    ALTER TABLE Product ADD CONSTRAINT FKProduct837757 FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID);
+    ALTER TABLE Customer ADD CONSTRAINT FKCustomer415114 FOREIGN KEY (PersonID) REFERENCES Person (PersonID);
+    ALTER TABLE Employee ADD CONSTRAINT FKEmployee879888 FOREIGN KEY (PersonID) REFERENCES Person (PersonID);
+    ALTER TABLE Product ADD CONSTRAINT FKProduct47824 FOREIGN KEY (LastModifiedBy) REFERENCES Employee (EmployeeID);
+    ALTER TABLE `Order` ADD CONSTRAINT FKOrder355972 FOREIGN KEY (PaymentID) REFERENCES Payment (PaymentID);
   END//
 DELIMITER ;
 CALL makeWebstoreDB();
@@ -212,14 +210,14 @@ insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- SELECT Statements
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-SELECT * FROM `Category`;
-SELECT * FROM `Person`;
-SELECT * FROM `Employee`;
-SELECT * FROM `Customer`;
-SELECT * FROM `Product`;
-SELECT * FROM `Payment`;
-SELECT * FROM `Order`;
-SELECT * FROM `Order_Product`;
+-- SELECT * FROM `Category`;
+-- SELECT * FROM `Person`;
+-- SELECT * FROM `Employee`;
+-- SELECT * FROM `Customer`;
+-- SELECT * FROM `Product`;
+-- SELECT * FROM `Payment`;
+-- SELECT * FROM `Order`;
+-- SELECT * FROM `Order_Product`;
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- DELETE Statements
