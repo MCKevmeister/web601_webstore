@@ -105,47 +105,47 @@ insert into Category (`CategoryName`, `Description`, `Image`) values
 -- ~~~~~~~~~~~~~~~~~~~
 -- Person Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Joby', 'Klich', 'jklich0@networksolutions.com', '592-795-0203', '063 Heath Pass', 'Miyang', 2119);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Daniella', 'Elam', 'delam1@g.co', '697-761-8833', '6 Dakota Park', 'San Ignacio', 5299);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Ilse', 'Di Biasio', 'idibiasio2@narod.ru', '541-299-9159', '85141 Dixon Junction', 'Lugui', 4955);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Regina', 'Stute', 'rstute3@is.gd', '641-223-3043', '992 Anderson Point', 'Horokhiv', 1617);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Kellia', 'Roderigo', 'kroderigo4@zdnet.com', '295-824-7266', '8 Sachtjen Place', 'Monte Carmelo', 9700);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Olympe', 'Somers', 'osomers5@cafepress.com', '618-345-6740', '29 Little Fleur Terrace', 'Calceta', 4766);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Craig', 'Oxbe', 'coxbe6@digg.com', '526-911-4576', '96472 Ramsey Road', 'Pingqiao', 6372);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Kristal', 'Woakes', 'kwoakes7@omniture.com', '826-274-1476', '67 Ruskin Plaza', 'Gombong', 8588);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Ida', 'Studdeard', 'istuddeard8@oaic.gov.au', '319-860-1251', '16 Heffernan Alley', 'Lizhuangzi', 5852);
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values ('Izabel', 'Mozzi', 'imozzi9@go.com', '877-489-5225', '38509 Starling Center', 'Carrières-sur-Seine', 1182);
-
+insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`) values
+('Joby', 'Klich', 'jklich0@networksolutions.com', '592-795-0203', '063 Heath Pass', 'Miyang', 2119),
+('Daniella', 'Elam', 'delam1@g.co', '697-761-8833', '6 Dakota Park', 'San Ignacio', 5299),
+('Ilse', 'Di Biasio', 'idibiasio2@narod.ru', '541-299-9159', '85141 Dixon Junction', 'Lugui', 4955),
+('Regina', 'Stute', 'rstute3@is.gd', '641-223-3043', '992 Anderson Point', 'Horokhiv', 1617),
+('Kellia', 'Roderigo', 'kroderigo4@zdnet.com', '295-824-7266', '8 Sachtjen Place', 'Monte Carmelo', 9700),
+('Olympe', 'Somers', 'osomers5@cafepress.com', '618-345-6740', '29 Little Fleur Terrace', 'Calceta', 4766),
+('Craig', 'Oxbe', 'coxbe6@digg.com', '526-911-4576', '96472 Ramsey Road', 'Pingqiao', 6372),
+('Kristal', 'Woakes', 'kwoakes7@omniture.com', '826-274-1476', '67 Ruskin Plaza', 'Gombong', 8588),
+('Ida', 'Studdeard', 'istuddeard8@oaic.gov.au', '319-860-1251', '16 Heffernan Alley', 'Lizhuangzi', 5852),
+('Izabel', 'Mozzi', 'imozzi9@go.com', '877-489-5225', '38509 Starling Center', 'Carrières-sur-Seine', 1182);
 
 -- ~~~~~~~~~~~~~~~~~~~
 -- Employee Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Employee (`PersonID`, `Role`) values (1, 'quam');
-insert into Employee (`PersonID`, `Role`) values (2, 'felis');
-insert into Employee (`PersonID`, `Role`) values (3, 'diam');
-insert into Employee (`PersonID`, `Role`) values (4, 'orci');
-insert into Employee (`PersonID`, `Role`) values (5, 'congue');
-insert into Employee (`PersonID`, `Role`) values (6, 'sollicitudin');
-insert into Employee (`PersonID`, `Role`) values (7, 'curabitur');
-insert into Employee (`PersonID`, `Role`) values (8, 'dis');
-insert into Employee (`PersonID`, `Role`) values (9, 'hac');
-insert into Employee (`PersonID`, `Role`) values (10, 'congue');
-
+insert into Employee (`PersonID`, `Role`) values
+(1, 'quam'),
+(2, 'felis'),
+(3, 'diam'),
+(4, 'orci'),
+(5, 'congue'),
+(6, 'sollicitudin'),
+(7, 'curabitur'),
+(8, 'dis'),
+(9, 'hac'),
+(10, 'congue');
 
 -- ~~~~~~~~~~~~~~~~~~~
 -- Customer Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Customer (`PersonID`) values (1);
-insert into Customer (`PersonID`) values (2);
-insert into Customer (`PersonID`) values (3);
-insert into Customer (`PersonID`) values (4);
-insert into Customer (`PersonID`) values (5);
-insert into Customer (`PersonID`) values (6);
-insert into Customer (`PersonID`) values (7);
-insert into Customer (`PersonID`) values (8);
-insert into Customer (`PersonID`) values (9);
-insert into Customer (`PersonID`) values (10);
-
+insert into Customer (`PersonID`) values
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10);
 
 -- ~~~~~~~~~~~~~~~~~~~
 -- Payment Test Data
@@ -180,32 +180,33 @@ insert into Product (`CategoryID`, `LastModifiedBy`, `Name`, `Manufacturer`, `De
 -- ~~~~~~~~~~~~~~~~~~~
 -- Order Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (3, 1, 'lorem', '2020-07-23', '2021-06-29', 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae', '05f8e6d6-7ad9-44c8-af48-29626f412b97', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (2, 9, 'integer', '2020-12-29', '2020-08-16', 'imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing', '1e05f5a5-743d-4489-8611-b9f90f328081', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (2, 1, 'vulputate', '2020-10-21', '2021-01-11', 'id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat', 'a95461b5-252c-4c85-8372-dae867df8e9e', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (5, 10, 'aenean', '2020-11-26', '2020-11-26', 'nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget', '321e54ad-ca71-437f-a92e-7cf6591d742a', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (1, 10, 'a', '2020-11-04', '2021-05-09', 'dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit', '8e20eb10-c282-464b-bdef-57ceb9e7b7db', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (1, 10, 'a', '2020-11-04', '2021-05-09', 'dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit', '8e20eb10-c282-464b-bdef-57ceb9e7b7db', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (9, 8, 'condimentum', '2021-02-26', '2021-01-28', 'turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at', 'b223bd27-bcba-4d87-9c46-ccf3dca21d46', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (2, 6, 'ut', '2020-12-21', '2021-01-03', null, '0ae0bb95-8e7a-4cf6-ab8f-8fd2b1f37f49', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (2, 10, 'sit', '2021-04-20', '2021-01-27', 'pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit', '2d09e1c6-59ff-42a6-92d0-954f32cf63ca', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (1, 9, 'lorem', '2020-08-11', '2021-06-25', 'nec dui luctus rutrum nulla tellus in sagittis dui vel nisl', '3834c915-9bcf-4e10-8b6a-5209325f400d', 0);
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values (4, 7, 'tristique', '2020-10-26', '2020-10-17', 'risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis', 'afabe505-1ba3-474e-be31-7c3c6cacfc9f', 0);
+insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`, `IsDeleted`) values
+(3, 1, 'lorem', '2020-07-23', '2021-06-29', 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae', '05f8e6d6-7ad9-44c8-af48-29626f412b97', 0),
+(2, 9, 'integer', '2020-12-29', '2020-08-16', 'imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing', '1e05f5a5-743d-4489-8611-b9f90f328081', 0),
+(2, 1, 'vulputate', '2020-10-21', '2021-01-11', 'id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat', 'a95461b5-252c-4c85-8372-dae867df8e9e', 0),
+(5, 10, 'aenean', '2020-11-26', '2020-11-26', 'nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget', '321e54ad-ca71-437f-a92e-7cf6591d742a', 0),
+(1, 10, 'a', '2020-11-04', '2021-05-09', 'dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit', '8e20eb10-c282-464b-bdef-57ceb9e7b7db', 0),
+(1, 10, 'a', '2020-11-04', '2021-05-09', 'dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit', '8e20eb10-c282-464b-bdef-57ceb9e7b7db', 0),
+(9, 8, 'condimentum', '2021-02-26', '2021-01-28', 'turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at', 'b223bd27-bcba-4d87-9c46-ccf3dca21d46', 0),
+(2, 6, 'ut', '2020-12-21', '2021-01-03', null, '0ae0bb95-8e7a-4cf6-ab8f-8fd2b1f37f49', 0),
+(2, 10, 'sit', '2021-04-20', '2021-01-27', 'pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit', '2d09e1c6-59ff-42a6-92d0-954f32cf63ca', 0),
+(1, 9, 'lorem', '2020-08-11', '2021-06-25', 'nec dui luctus rutrum nulla tellus in sagittis dui vel nisl', '3834c915-9bcf-4e10-8b6a-5209325f400d', 0),
+(4, 7, 'tristique', '2020-10-26', '2020-10-17', 'risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis', 'afabe505-1ba3-474e-be31-7c3c6cacfc9f', 0);
 
 -- ~~~~~~~~~~~~~~~~~~~
 -- Order_Product Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (1, 6, 3, 31.83);
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (2, 6, 2, 95.5);
-insert into Order_Product (`OrderID`, `ProductID`, `Qty`, `PriceEach`) values (3, 2, 4, 47.44);
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (4, 6, 1, 71.19);
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (5, 7, 1, 79.02);
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (6, 4, 2, 62.25);
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (7, 4, 1, 82.23);
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (8, 2, 1, 74.22);
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (9, 9, 2, 16.62);
-insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values (10, 1, 3, 5.64);
-
+insert into Order_Product (`OrderID` , `ProductID`, `Qty`, `PriceEach`) values
+(1, 6, 3, 31.83),
+(2, 6, 2, 95.5),
+(3, 2, 4, 47.44),
+(4, 6, 1, 71.19),
+(5, 7, 1, 79.02),
+(6, 4, 2, 62.25),
+(7, 4, 1, 82.23),
+(8, 2, 1, 74.22),
+(9, 9, 2, 16.62),
+(10, 1, 3, 5.64);
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- SELECT Statements
