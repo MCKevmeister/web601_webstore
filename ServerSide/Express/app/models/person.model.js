@@ -1,45 +1,53 @@
-module.exports = (sequelize, Sequelize) => {
-    return sequelize.define ( "Person", {
-        ID: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        CustomerID: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: Customer,
-                key: 'ID'
-            }
-        },
-        PaymentID: {
-            type: DataTypes.STRING,
-            references: {
-                model: Payment,
-                key: 'ID'
-            }
-        },
-        Status: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        OrderDate: {
-            type: DataTypes.DATEONLY
-        },
-        ShippedDate: {
-            type: DataTypes.DATEONLY
-        },
-        Comments: {
-            type: DataTypes.STRING
-        },
-        TrackingNumber: {
-            type: DataTypes.STRING
-        },
-        IsDeleted: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
-        }
-    } );
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('person', {
+    PersonID: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
+    FirstName: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    LastName: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    Email: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    Phone: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    Address: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    City: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    PostCode: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
+  }, {
+    sequelize,
+    tableName: 'person',
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "PersonID" },
+        ]
+      },
+    ]
+  });
 };
