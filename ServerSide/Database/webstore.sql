@@ -10,16 +10,16 @@ DELIMITER //
 CREATE PROCEDURE makeWebstoreDB()
 	BEGIN
     CREATE TABLE Category (
-        CategoryID   int(10) NOT NULL AUTO_INCREMENT,
-        CategoryName char(255),
-        Description  varchar(255),
-        Image        varchar(100),
+        CategoryID       int(10) NOT NULL AUTO_INCREMENT,
+        CategoryName     char(255),
+        Description      varchar(255),
+        Image            varchar(100),
         PRIMARY KEY (CategoryID));
     CREATE TABLE Product (
         ProductID        int(10) NOT NULL AUTO_INCREMENT,
         CategoryID       int(10) NOT NULL,
         LastModifiedBy   int(10) NOT NULL,
-        Name             varchar(255),
+        ProductName      varchar(255),
         Manufacturer     varchar(255),
         Description      varchar(255),
         QtyInStock       int(10),
@@ -30,46 +30,46 @@ CREATE PROCEDURE makeWebstoreDB()
         IsAvailable      tinyint(1) NOT NULL,
         PRIMARY KEY (ProductID));
     CREATE TABLE `Order` (
-        OrderID        int(10) NOT NULL AUTO_INCREMENT,
-        CustomerID     int(10) NOT NULL,
-        PaymentID      int(10),
-        Status         varchar(255) NOT NULL,
-        OrderDate      date,
-        ShippedDate    date,
-        Comments       varchar(255),
-        TrackingNumber varchar(255),
-        IsDeleted      tinyint(1) NOT NULL,
+        OrderID          int(10) NOT NULL AUTO_INCREMENT,
+        CustomerID       int(10) NOT NULL,
+        PaymentID        int(10),
+        Status           varchar(255) NOT NULL,
+        OrderDate        date,
+        ShippedDate      date,
+        Comments         varchar(255),
+        TrackingNumber   varchar(255),
+        IsDeleted        tinyint(1) NOT NULL,
         PRIMARY KEY (OrderID));
     CREATE TABLE Payment (
-        PaymentID   int(10) NOT NULL AUTO_INCREMENT,
-        CustomerID  int(10) NOT NULL,
-        PaymentDate date,
-        Amount      decimal(13, 2),
+        PaymentID        int(10) NOT NULL AUTO_INCREMENT,
+        CustomerID       int(10) NOT NULL,
+        PaymentDate      date,
+        Amount           decimal(13, 2),
         PRIMARY KEY (PaymentID));
     CREATE TABLE Customer (
-        CustomerID int(10) NOT NULL AUTO_INCREMENT,
-        PersonID   int(10) NOT NULL,
+        CustomerID       int(10) NOT NULL AUTO_INCREMENT,
+        PersonID         int(10) NOT NULL,
         PRIMARY KEY (CustomerID));
     CREATE TABLE Order_Product (
-        OrderID   int(10) NOT NULL,
-        ProductID int(10) NOT NULL,
-        Qty       int(10) NOT NULL,
-        PriceEach decimal(13, 2) NOT NULL,
+        OrderID          int(10) NOT NULL,
+        ProductID        int(10) NOT NULL,
+        Qty              int(10) NOT NULL,
+        PriceEach        decimal(13, 2) NOT NULL,
         PRIMARY KEY (OrderID, ProductID));
     CREATE TABLE Employee (
-        EmployeeID int(10) NOT NULL AUTO_INCREMENT,
-        PersonID   int(10) NOT NULL,
-        Role       varchar(255),
+        EmployeeID       int(10) NOT NULL AUTO_INCREMENT,
+        PersonID         int(10) NOT NULL,
+        Role             varchar(255),
       PRIMARY KEY (EmployeeID));
     CREATE TABLE Person (
-        PersonID  int(10) NOT NULL AUTO_INCREMENT,
-        FirstName varchar(255) NOT NULL,
-        LastName  varchar(255) NOT NULL,
-        Email     varchar(255) NOT NULL,
-        Phone     varchar(255),
-        Address   varchar(255),
-        City      varchar(255),
-        PostCode  int(4),
+        PersonID         int(10) NOT NULL AUTO_INCREMENT,
+        FirstName        varchar(255) NOT NULL,
+        LastName         varchar(255) NOT NULL,
+        Email            varchar(255) NOT NULL,
+        Phone            varchar(255),
+        Address          varchar(255),
+        City             varchar(255),
+        PostCode         int(4),
         PRIMARY KEY (PersonID));
     ALTER TABLE Payment ADD CONSTRAINT FKPayment617515 FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID);
     ALTER TABLE `Order` ADD CONSTRAINT FKOrder835009 FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID);
@@ -165,7 +165,7 @@ insert into Payment (`CustomerID`, `PaymentDate`, `Amount`) values
 -- ~~~~~~~~~~~~~~~~~~~
 -- Product Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Product (`CategoryID`, `LastModifiedBy`, `Name`, `Manufacturer`, `Description`, `QtyInStock`, `Price`, `MSRP`, `Image`, `LastModifiedDate`, `IsAvailable`) values
+insert into Product (`CategoryID`, `LastModifiedBy`, `ProductName`, `Manufacturer`, `Description`, `QtyInStock`, `Price`, `MSRP`, `Image`, `LastModifiedDate`, `IsAvailable`) values
 (4, 4, 'pulvinar', 'nascetur', 'proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis', 7, 79.24, 47.82, 'http://dummyimage.com/155x100.png/ff4444/ffffff', '2021-01-28', 1),
 (9, 8, 'iaculis','diam', 'parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum', 14, 70.37, 80.78, 'http://dummyimage.com/100x100.png/ff4444/ffffff', '2021-03-16', 1),
 (8, 5, 'blandit', 'curae', 'nunc rhoncus dui vel sem sed sagittis nam congue risus', 18, 76.71, 52.9, 'http://dummyimage.com/240x100.png/dddddd/000000', '2020-09-09', 1),
