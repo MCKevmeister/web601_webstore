@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const db = require("./app/models");
 const app = express();
 
 const corsOptions = {
@@ -17,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // sync sequelize models with database
+const db = require("./app/models");
 db.sequelize.sync().then( () => {
     console.log ("Sync with DB")
 })
