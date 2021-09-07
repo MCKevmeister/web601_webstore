@@ -2,7 +2,40 @@ const db = require("../models");
 const Product = db.product;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Product
+// Gets all Products from the database, optional conditional ProductName keyword
+exports.findAll = (req, res) => {
+    let productName = req.query.ProductName;
+    let condition = productName ? {ProductName: {[Op.like]: `%${productName}%`}} : null;
+
+    Product.findAll({ where: condition })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving products."
+            });
+        });
+};
+
+// Find a single Product with an id
+exports.findOne = (req, res) => {
+    const id = req.params.id;
+
+    Product.findByPk(id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            console.log (err)
+            res.status(500).send({
+                message: "Error retrieving Product with id=" + id
+            });
+        });
+};
+
+// Add a new Product
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.title) {
@@ -40,40 +73,7 @@ exports.create = (req, res) => {
         });
 };
 
-// Retrieve all Products from the database.
-exports.findAll = (req, res) => {
-    let productName = req.query.ProductName;
-    let condition = productName ? {ProductName: {[Op.like]: `%${productName}%`}} : null;
-
-    Product.findAll({ where: condition })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving products."
-            });
-        });
-};
-
-// Find a single Product with an id
-exports.findOne = (req, res) => {
-    const id = req.params.id;
-
-    Product.findByPk(id)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            console.log (err)
-            res.status(500).send({
-                message: "Error retrieving Product with id=" + id
-            });
-        });
-};
-
-// Update a Product by the id in the request
+// Updates a product by its id
 exports.update = (req, res) => {
     const id = req.params.id;
 
@@ -99,7 +99,7 @@ exports.update = (req, res) => {
         });
 };
 
-// Delete a Product with the specified id in the request
+// Delete product by id
 exports.delete = (req, res) => {
     const id = req.params.id;
 
