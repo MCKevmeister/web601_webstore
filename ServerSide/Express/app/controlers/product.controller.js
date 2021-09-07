@@ -2,19 +2,25 @@ const db = require("../models");
 const Product = db.product;
 const Op = db.Sequelize.Op;
 
-// Gets all Products from the database, optional conditional ProductName keyword
+/**
+ * Gets all Products
+ * @CategoryName {string} Filters results to Products matching param CategoryName
+ * @ProductName {string} Filters products returned to those with param in ProductName
+ */
+//  optional  keyword optional  keyword
 exports.findAll = (req, res) => {
+    let categoryName = req.query.CategoryName;
     let productName = req.query.ProductName;
-    let condition = productName ? {ProductName: {[Op.like]: `%${productName}%`}} : null;
+    let conditionCategoryName = categoryName ? {CategoryName: {[Op.like]: `%${categoryName}%`}} : null;
+    let conditionProductName = productName ? {ProductName: {[Op.like]: `%${productName}%`}} : null;
 
-    Product.findAll({ where: condition })
+    Product.findAll({ where: conditionCategoryName, conditionProductName })
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving products."
+                message: err.message || "Some error occurred while retrieving products."
             });
         });
 };
@@ -38,9 +44,9 @@ exports.findOne = (req, res) => {
 // Add a new Product
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.CategoryID || !req.body.LastModifiedBy || !req.body.ProductName || !req.body.IsAvailable) {
         res.status(400).send({
-            message: "Content can not be empty!"
+            message: "Please fill all required fields"
         });
         return;
     }
@@ -63,12 +69,11 @@ exports.create = (req, res) => {
     // Save Product in the database
     Product.create(product)
         .then(data => {
-            res.send(data);
+            res.status(201).send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Product."
+                message: err.message || "Some error occurred while creating the Product."
             });
         });
 };
@@ -82,7 +87,7 @@ exports.update = (req, res) => {
     })
         .then(num => {
             if (num === 1) {
-                res.send({
+                res.status(200).send({
                     message: "Product was updated successfully."
                 });
             } else {
@@ -135,9 +140,9 @@ exports.deleteAll = (req, res) => {
             res.send({ message: `${nums} Products were deleted successfully!` });
         })
         .catch(err => {
+            console.log (err)
             res.status(500).send({
-                message:
-                    err.message || "Some error occurred while removing all Products."
+                message: err.message || "Some error occurred while removing all Products."
             });
         });
 };
