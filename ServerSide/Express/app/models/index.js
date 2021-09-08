@@ -1,8 +1,8 @@
-const Sequelize = require("sequelize");
-const dbConfig = require("../config/db.config.js");
-const initModels = require("./init-models").initModels;
+const Sequelize = require ( "sequelize" );
+const dbConfig = require ( "../config/db.config.js" );
+const initModels = require ( "./init-models" ).initModels;
 
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+const sequelize = new Sequelize ( dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
     dialect: dbConfig.dialect,
     operatorsAliases: false,
@@ -13,9 +13,9 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
         acquire: dbConfig.pool.acquire,
         idle: dbConfig.pool.idle
     }
-});
+} );
 
-const models = initModels(sequelize);
+const models = initModels ( sequelize );
 
 const db = {};
 
