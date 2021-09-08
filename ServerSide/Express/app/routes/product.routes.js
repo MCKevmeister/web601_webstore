@@ -1,22 +1,22 @@
 module.exports = app => {
-    const products = require("../controlers/product.controller.js");
+    const product = require("../controlers/product.controller.js");
 
-    let router = require ( "express" ).Router();
+    const router = require ( "express" ).Router();
 
     // Retrieve all products
-    router.get("/", products.findAll);
+    router.get("/", product.findAll);
 
     // Retrieve a single product with id
-    router.get("/:id", products.findOne);
+    router.get("/:id", product.findOne);
 
     // Create a new product
-    router.post("/", products.create);
+    router.post("/", product.create);
 
     // Updates a product with id
-    router.put("/:id", products.update);
+    router.put("/:id", product.update);
 
     // Delete a product with id
-    router.delete("/:id", products.delete);
+    router.delete("/:id", product.delete);
 
-    app.use('/api/products', router);
+    app.use('/api/product', router);
 };
