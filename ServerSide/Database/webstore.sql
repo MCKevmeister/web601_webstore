@@ -11,7 +11,7 @@ CREATE PROCEDURE makeWebstoreDB()
 	BEGIN
     CREATE TABLE Category (
         CategoryID       int(10) NOT NULL AUTO_INCREMENT,
-        CategoryName     char(255),
+        CategoryName     varchar(255) NOT NULL,
         Description      varchar(255),
         Image            varchar(100),
         PRIMARY KEY (CategoryID));
@@ -44,7 +44,7 @@ CREATE PROCEDURE makeWebstoreDB()
         PaymentID        int(10) NOT NULL AUTO_INCREMENT,
         CustomerID       int(10) NOT NULL,
         PaymentDate      date,
-        Amount           decimal(13, 2),
+        Amount           decimal(13, 2) NOT NULL,
         PRIMARY KEY (PaymentID));
     CREATE TABLE Customer (
         CustomerID       int(10) NOT NULL AUTO_INCREMENT,
