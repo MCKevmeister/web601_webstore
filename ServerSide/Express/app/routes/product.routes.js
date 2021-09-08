@@ -1,4 +1,3 @@
-// const products = require ( "../controllers/product.controller.js" );
 module.exports = app => {
     const products = require("../controlers/product.controller.js");
 
