@@ -21,7 +21,7 @@
 | PUT | api/category/:id | Update a category by id |
 | DELETE | api/category/:id | Delete category by id |
 
-## User(customer account) API
+## User API
 
 | Methods | URL | Actions |
 | ------- | ---- | ------- |
