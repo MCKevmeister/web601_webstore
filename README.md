@@ -1,4 +1,6 @@
 # WEB601 Webstore
+
+This class project invovles creating a web api with express.js that will be consumed by a react native front end. 
  
 - [MySQL database](https://www.mysql.com/)
 - [Node](https://nodejs.org/en/) / [Express Back End](https://expressjs.com/)
