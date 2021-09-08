@@ -4,7 +4,6 @@ const Customer = db.customer;
 const Employee = db.employee;
 
 // Gets all Customers
-
 exports.findAll = (req, res) => {
     Customer.findAll ()
         .then ( data => {
@@ -65,7 +64,7 @@ exports.create = (req, res) => {
                 const customer = {
                     PersonID: personData.PersonID
                 };
-
+                // Save Customer in the database
                 Customer.create ( customer )
                     .then ( customerData => {
                         res.status ( 201 ).send ( customerData );
@@ -82,7 +81,7 @@ exports.create = (req, res) => {
                     PersonID: personData.PersonID,
                     Role: role
                 };
-
+                // Save Employee in the database
                 Employee.create ( employee )
                     .then ( employeeData => {
                         res.status ( 201 ).send ( employeeData );
