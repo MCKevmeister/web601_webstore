@@ -19,7 +19,7 @@
 | GET  | api/category | Gets all categories |
 | POST | api/category | Add a new category |
 | PUT | api/category/:id | Update a category by id |
-| DELETE | api/category | Delete category by id |
+| DELETE | api/category/:id | Delete category by id |
 
 ## User API
 
