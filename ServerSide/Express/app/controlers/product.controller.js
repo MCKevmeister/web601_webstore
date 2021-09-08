@@ -7,7 +7,6 @@ const Op = db.Sequelize.Op;
  * @CategoryName {string} Filters results to Products matching param CategoryName
  * @ProductName {string} Filters products returned to those with param in ProductName
  */
-//  optional  keyword optional  keyword
 exports.findAll = (req, res) => {
     let categoryName = req.query.CategoryName;
     let productName = req.query.ProductName;
@@ -113,7 +112,7 @@ exports.delete = (req, res) => {
     })
         .then(num => {
             if (num === 1) {
-                res.send({
+                res.status(200).send({
                     message: "Product was deleted successfully!"
                 });
             } else {
@@ -137,7 +136,7 @@ exports.deleteAll = (req, res) => {
         truncate: false
     })
         .then(nums => {
-            res.send({ message: `${nums} Products were deleted successfully!` });
+            res.status(200).send({ message: `${nums} Products were deleted successfully!` });
         })
         .catch(err => {
             console.log (err)

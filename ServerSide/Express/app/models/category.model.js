@@ -1,4 +1,3 @@
-const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('category', {
     CategoryID: {
@@ -9,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     CategoryName: {
       type: DataTypes.CHAR(255),
-      allowNull: true
+      allowNull: false
     },
     Description: {
       type: DataTypes.STRING(255),
