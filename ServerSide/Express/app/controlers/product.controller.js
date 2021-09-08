@@ -15,11 +15,11 @@ exports.findAll = (req, res) => {
 
     Product.findAll({ where: conditionCategoryName, conditionProductName })
         .then(data => {
-            res.send(data);
+            res.status(200).send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving products."
+                message: err.message || "An error occurred while retrieving products."
             });
         });
 };
@@ -30,7 +30,7 @@ exports.findOne = (req, res) => {
 
     Product.findByPk(id)
         .then(data => {
-            res.send(data);
+            res.status(200).send(data);
         })
         .catch(err => {
             console.log (err)
@@ -72,7 +72,7 @@ exports.create = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the Product."
+                message: err.message || "An error occurred while creating the Product."
             });
         });
 };
