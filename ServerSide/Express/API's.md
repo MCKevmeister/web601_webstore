@@ -5,9 +5,9 @@
 | Methods | URL | Actions |
 | ------- | ---- | ------- |
 | GET | api/product | Gets all products |
-| GET | api/product/:id | Gets product by id |
 | GET | api/product?ProductName=keyword | Gets all products where ProductName contains "keyword" |
 | GET | api/product?CategoryName=keyword | Gets all products where CategoryName contains "keyword" |
+| GET | api/product/:id | Gets product by id |
 | POST | api/product | Add a new product |
 | PUT | api/product/:id | Update a product by id |
 | DELETE | api/product/:id | Delete product by id |
@@ -21,13 +21,13 @@
 | PUT | api/category/:id | Update a category by id |
 | DELETE | api/category/:id | Delete category by id |
 
-## User API
+## User(customer account) API
 
 | Methods | URL | Actions |
 | ------- | ---- | ------- |
 | GET | api/user | Get all users |
 | GET | api/user/:id | Get user by id |
-| POST | api/user | Add a new user |
+| POST | api/user?AccountType=keyword&Role=keyword | Add a new user and assigns them a customer/employee based on AccountType "keyword". Role is passed if the user account type is an employee. |
 | PUT | api/user/:id | Update a user by id |
 | DELETE | api/user | Delete user by id |
 
