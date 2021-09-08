@@ -5,9 +5,9 @@
 | Methods | URL | Actions |
 | ------- | ---- | ------- |
 | GET | api/product | Gets all products |
-| GET | api/product?ProductName=keyword | Gets all products where ProductName contains "keyword" |
-| GET | api/product?CategoryName=keyword | Gets all products where CategoryName contains "keyword" |
-| GET | api/product/:id | Gets product by id |
+| GET | api/product?ProductName=keyword | Get all products where ProductName contains "keyword" |
+| GET | api/product?CategoryName=keyword | Get all products where CategoryName contains "keyword" |
+| GET | api/product/:id | Get product by id |
 | POST | api/product | Add a new product |
 | PUT | api/product/:id | Update a product by id |
 | DELETE | api/product/:id | Delete product by id |
@@ -16,7 +16,7 @@
 
 | Methods | URL | Actions |
 | ------- | ---- | ------- |
-| GET  | api/category | Gets all categories |
+| GET  | api/category | Get all categories |
 | POST | api/category | Add a new category |
 | PUT | api/category/:id | Update a category by id |
 | DELETE | api/category/:id | Delete category by id |
@@ -35,8 +35,8 @@
 
 | Methods | URL | Actions |
 | ------- | ---- | ------- |
-| GET | api/orders | Gets all orders |
-| GET | api/orders/:id | Gets product by id |
-| POST | api/orders | Add a new orders |
-| PUT | api/orders/:id | Updates a orders by its id |
-| DELETE | api/order | Delete an order by id |
+| GET | api/order | Get all orders |
+| GET | api/order/:id | Get order by id |
+| POST | api/order | Add a new order |
+| PUT | api/order/:id | Updates a order by its id |
+| DELETE | api/order/:id | Delete an order by id |
