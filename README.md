@@ -59,5 +59,5 @@ This class project invovles creating a web api with express.js that will be cons
 - [sequelize](https://sequelize.org/)
   - Object–relational mapping (ORM) between Node.js and MySQL
 - [sequelize-auto](https://github.com/sequelize/sequelize-auto)
-  - Generation of sequelize models for back end
+  - Generation of sequelize models
 ---
