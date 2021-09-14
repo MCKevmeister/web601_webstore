@@ -4,6 +4,9 @@ const cors = require ( "cors" );
 const app = express ();
 const db = require ( "./app/models" );
 
+//register view engine
+app.set ( 'view engine', 'ejs' );
+
 const corsOptions = {
     origin: "http://localhost:8081"
 };
@@ -21,11 +24,15 @@ db.sequelize.sync ().then ( () => {
     console.log ( "Sync with DB" )
 } )
 
+app.get ( '/', (req, res) => {
+    res.render ( 'index' );
+} )
+
 // Requiring all route handlers
 require ( "./app/routes/product.routes" ) ( app );
 require ( "./app/routes/category.routes" ) ( app );
 require ( "./app/routes/user.routes" ) ( app );
-
+require ( "./app/routes/order.routes" ) ( app );
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
