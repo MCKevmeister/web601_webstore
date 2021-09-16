@@ -3,7 +3,6 @@ const Category = db.category;
 
 /**
  * Get all categories
- * @id {string} The id of the Order to delete
  */
 exports.findAll = (req, res) => {
     Category.findAll ()
