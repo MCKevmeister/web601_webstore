@@ -4,8 +4,7 @@ This class project invovles creating a web api with express.js that will be cons
  
 - [MySQL database](https://www.mysql.com/)
 - [Node](https://nodejs.org/en/) / [Express Back End](https://expressjs.com/)
-- [React Native](https://reactnative.dev/) Front End
-
+-
 # API Endpoints
 
 ## Products API
@@ -18,7 +17,7 @@ This class project invovles creating a web api with express.js that will be cons
 | GET | api/product/:id | Get product by id |
 | POST | api/product | Add a new product |
 | PUT | api/product/:id | Update a product by id |
-| DELETE | api/product/:id | Delete product by id |
+| DELETE | api/product/:id | Delete product by id Note: Deleting a product sets IsAvailable to false |
 
 ## Category API
 
