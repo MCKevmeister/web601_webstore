@@ -10,7 +10,7 @@
 | GET | api/product/:id | Get product by id |
 | POST | api/product | Add a new product |
 | PUT | api/product/:id | Update a product by id |
-| DELETE | api/product/:id | Delete product by id |
+| DELETE | api/product/:id | Delete product by id Note: Deleting a product sets IsAvailable to false |
 
 ## Category API
 
