@@ -116,14 +116,15 @@ exports.update = (req, res) => {
 
 /**
  * Delete product by id
+ * Note: Deleting a product sets IsAvailable to false
  * @id {string} The id of the product to delete
  */
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Product.destroy ( {
-        where: {id: id}
-    } )
+    Product.update (
+        {IsAvailable: false},
+        {where: {id: id}} )
         .then ( num => {
             if (num === 1) {
                 res.status ( 200 ).send ( {
@@ -139,25 +140,6 @@ exports.delete = (req, res) => {
             console.log ( err )
             res.status ( 500 ).send ( {
                 message: "Could not delete Product with id=" + id
-            } );
-        } );
-};
-
-/**
- * Delete all Products from the database.
- */
-exports.deleteAll = (req, res) => {
-    Product.destroy ( {
-        where: {},
-        truncate: false
-    } )
-        .then ( nums => {
-            res.status ( 200 ).send ( {message: `${nums} Products were deleted successfully!`} );
-        } )
-        .catch ( err => {
-            console.log ( err )
-            res.status ( 500 ).send ( {
-                message: err.message || "Some error occurred while removing all Products."
             } );
         } );
 };
