@@ -4,7 +4,7 @@ This class project invovles creating a web api with express.js that will be cons
  
 - [MySQL database](https://www.mysql.com/)
 - [Node](https://nodejs.org/en/) / [Express Back End](https://expressjs.com/)
--
+
 # API Endpoints
 
 ## Products API
