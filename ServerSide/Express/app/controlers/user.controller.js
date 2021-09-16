@@ -1,13 +1,17 @@
 const db = require ( "../models" );
+const {Op} = require ( "sequelize" );
 const Person = db.person;
 const Customer = db.customer;
 const Employee = db.employee;
 
 /**
  * Gets all Customers
+ * @email {string} Filters users to where email matches user account
  */
 exports.findAll = (req, res) => {
-    Customer.findAll ()
+    let userEmail = req.query.Email;
+    let conditionEmail = userEmail ? {Email: {[Op.like]: `%${userEmail}%`}} : null;
+    Customer.findAll ( {where: conditionEmail} )
         .then ( data => {
             res.status ( 200 ).send ( data );
         } )
@@ -43,7 +47,7 @@ exports.findOne = (req, res) => {
 exports.create = (req, res) => {
 
     // Validate request
-    if (!req.body.FirstName || !req.body.LastName || !req.body.Email || !req.body.IsAvailable || !req.query.AccountType) {
+    if (!req.body.FirstName || !req.body.LastName || !req.body.Email || !req.query.AccountType) {
         res.status ( 400 ).send ( {
             message: "Please fill all required fields"
         } );
@@ -60,7 +64,7 @@ exports.create = (req, res) => {
         Phone: req.body.Phone,
         Address: req.body.Address,
         City: req.body.City,
-        PostCode: req.body.PostCode,
+        PostCode: req.body.PostCode
     };
 
     // Save Person in the database
