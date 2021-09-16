@@ -25,10 +25,10 @@ db.sequelize.sync ().then ( () => {
 } )
 
 app.get ( '/', (req, res) => {
-    res.render ( 'index' );
+    res.render ( 'layout', { template: 'index' } );
 } )
 
-// Requiring all route handlers
+// Route handlers
 require ( "./app/routes/product.routes" ) ( app );
 require ( "./app/routes/category.routes" ) ( app );
 require ( "./app/routes/user.routes" ) ( app );
