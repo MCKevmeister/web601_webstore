@@ -1,7 +1,9 @@
 const db = require ( "../models" );
 const Order = db.order;
 
-// Gets all Orders
+/**
+ * Gets all Orders
+ */
 exports.findAll = (req, res) => {
 
     Order.findAll ()
@@ -15,7 +17,10 @@ exports.findAll = (req, res) => {
         } );
 };
 
-// Find a single Order with an id
+/**
+ * Find a single Order with an id
+ * @id {string} The id of the Order to find
+ */
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
@@ -31,7 +36,9 @@ exports.findOne = (req, res) => {
         } );
 };
 
-// Add a new Order
+/**
+ * Create a new Order
+ */
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.CustomerID || !req.body.IsDeleted) {
@@ -65,7 +72,10 @@ exports.create = (req, res) => {
         } );
 };
 
-// Updates a order by its id
+/**
+ * Updates a order by its id
+ * @id {string} The id of the Order to find
+ */
 exports.update = (req, res) => {
     const id = req.params.id;
 
@@ -91,7 +101,10 @@ exports.update = (req, res) => {
         } );
 };
 
-// Delete order by id
+/**
+ * Delete order by id
+ * @id {string} The id of the Order to delete
+ */
 exports.delete = (req, res) => {
     const id = req.params.id;
 

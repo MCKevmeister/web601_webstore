@@ -1,7 +1,10 @@
 const db = require ( "../models" );
 const Category = db.category;
 
-// Get all categories
+/**
+ * Get all categories
+ * @id {string} The id of the Order to delete
+ */
 exports.findAll = (req, res) => {
     Category.findAll ()
         .then ( data => {
@@ -14,7 +17,9 @@ exports.findAll = (req, res) => {
         } );
 };
 
-// Add a new Category
+/**
+ * Add a new Category
+ */
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.CategoryName) {
@@ -43,6 +48,10 @@ exports.create = (req, res) => {
         } );
 };
 
+/**
+ * Updates a category by its id
+ * @id {string} The id of the category to update
+ */
 // Updates a category by its id
 exports.update = (req, res) => {
     const id = req.params.id;
@@ -69,7 +78,10 @@ exports.update = (req, res) => {
         } );
 };
 
-// Delete category by id
+/**
+ * Delete category by id
+ * @id {string} The id of the category to delete
+ */
 exports.delete = (req, res) => {
     const id = req.params.id;
 

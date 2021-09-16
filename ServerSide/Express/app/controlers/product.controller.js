@@ -24,7 +24,9 @@ exports.findAll = (req, res) => {
         } );
 };
 
-// Find a single Product with an id
+/**
+ * Find a single Product with an id
+ */
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
@@ -40,7 +42,9 @@ exports.findOne = (req, res) => {
         } );
 };
 
-// Add a new Product
+/**
+ * Add a new Product
+ */
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.CategoryID || !req.body.LastModifiedBy || !req.body.ProductName || !req.body.IsAvailable) {
@@ -50,7 +54,9 @@ exports.create = (req, res) => {
         return;
     }
 
-    // Create a Product
+    /**
+     * Create a Product
+     */
     const product = {
         CategoryID: req.body.CategoryID,
         LastModifiedBy: req.body.LastModifiedBy,
@@ -65,7 +71,9 @@ exports.create = (req, res) => {
         IsAvailable: req.body.IsAvailable,
     };
 
-    // Save Product in the database
+    /**
+     * Save Product in the database
+     */
     Product.create ( product )
         .then ( data => {
             res.status ( 201 ).send ( data );
@@ -77,7 +85,10 @@ exports.create = (req, res) => {
         } );
 };
 
-// Updates a product by its id
+/**
+ * Updates a product by its id
+ * @id {string} The id of the product to update
+ */
 exports.update = (req, res) => {
     const id = req.params.id;
 
@@ -103,7 +114,10 @@ exports.update = (req, res) => {
         } );
 };
 
-// Delete product by id
+/**
+ * Delete product by id
+ * @id {string} The id of the product to delete
+ */
 exports.delete = (req, res) => {
     const id = req.params.id;
 
@@ -129,7 +143,9 @@ exports.delete = (req, res) => {
         } );
 };
 
-// Delete all Products from the database.
+/**
+ * Delete all Products from the database.
+ */
 exports.deleteAll = (req, res) => {
     Product.destroy ( {
         where: {},

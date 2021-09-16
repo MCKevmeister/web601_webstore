@@ -3,7 +3,9 @@ const Person = db.person;
 const Customer = db.customer;
 const Employee = db.employee;
 
-// Gets all Customers
+/**
+ * Gets all Customers
+ */
 exports.findAll = (req, res) => {
     Customer.findAll ()
         .then ( data => {
@@ -11,12 +13,15 @@ exports.findAll = (req, res) => {
         } )
         .catch ( err => {
             res.status ( 500 ).send ( {
-                message: err.message || "Some error occurred while retrieving user."
+                message: err.message || "An error occurred while retrieving user."
             } );
         } );
 };
 
-// Find a single Customer with an id
+/**
+ * Find a single Customer with an id
+ * @id {string} The id of the customer to find
+ */
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
@@ -32,7 +37,9 @@ exports.findOne = (req, res) => {
         } );
 };
 
-// Add a new Customer
+/**
+ * Add a new Customer
+ */
 exports.create = (req, res) => {
 
     // Validate request
@@ -100,7 +107,10 @@ exports.create = (req, res) => {
         } );
 };
 
-// Updates a Customer by id
+/**
+ * Updates a Customer by id
+ * @id {string} The id of the customer to update
+ */
 exports.update = (req, res) => {
     const id = req.params.id;
 
@@ -126,7 +136,10 @@ exports.update = (req, res) => {
         } );
 };
 
-// Delete Customer by id
+/**
+ * Delete Customer by id
+ * @id {string} The id of the customer to delete
+ */
 exports.delete = (req, res) => {
     const id = req.params.id;
 
