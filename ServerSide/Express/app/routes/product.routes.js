@@ -1,6 +1,5 @@
 module.exports = app => {
     const product = require ( "../controlers/product.controller.js" );
-
     const router = require ( "express" ).Router ();
 
     // Retrieve all products
