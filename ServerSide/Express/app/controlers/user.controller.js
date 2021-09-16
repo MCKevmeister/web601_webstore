@@ -43,6 +43,7 @@ exports.findOne = (req, res) => {
 
 /**
  * Add a new Customer
+ * @AccountType {string} The account type to be created
  */
 exports.create = (req, res) => {
 
