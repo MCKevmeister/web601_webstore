@@ -19,6 +19,7 @@ CREATE TABLE Category
     CategoryName varchar(255) NOT NULL,
     Description  varchar(255),
     Image        varchar(100),
+    IsDeleted    tinyint(1) NOT NULL,
     PRIMARY KEY (CategoryID)
 );
 CREATE TABLE Product
@@ -47,7 +48,6 @@ CREATE TABLE `Order`
     ShippedDate    date,
     Comments       varchar(255),
     TrackingNumber varchar(255),
-    IsDeleted      tinyint(1) NOT NULL,
     PRIMARY KEY (OrderID)
 );
 CREATE TABLE Payment
@@ -70,7 +70,8 @@ CREATE TABLE Order_Product
     ProductID int(10) NOT NULL,
     Qty       int(10) NOT NULL,
     PriceEach decimal(13, 2) NOT NULL,
-    PRIMARY KEY (OrderID, ProductID)
+    PRIMARY KEY (OrderID,
+                 ProductID)
 );
 CREATE TABLE Employee
 (
@@ -84,11 +85,12 @@ CREATE TABLE Person
     PersonID  int(10) NOT NULL AUTO_INCREMENT,
     FirstName varchar(255) NOT NULL,
     LastName  varchar(255) NOT NULL,
-    Email     varchar(255) NOT NULL,
+    Email     varchar(255) NOT NULL UNIQUE,
     Phone     varchar(255),
     Address   varchar(255),
     City      varchar(255),
     PostCode  int(4),
+    IsDeleted tinyint(1) NOT NULL,
     PRIMARY KEY (PersonID)
 );
 ALTER TABLE Payment
@@ -100,7 +102,7 @@ ALTER TABLE Order_Product
 ALTER TABLE Order_Product
     ADD CONSTRAINT FKOrder_Prod535307 FOREIGN KEY (ProductID) REFERENCES Product (ProductID);
 ALTER TABLE Product
-    ADD CONSTRAINT FKProduct837757 FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID);
+    ADD CONSTRAINT FKProduct608764 FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID);
 ALTER TABLE Customer
     ADD CONSTRAINT FKCustomer415114 FOREIGN KEY (PersonID) REFERENCES Person (PersonID);
 ALTER TABLE Employee
@@ -120,49 +122,59 @@ CALL makeWebstoreDB();
 -- ~~~~~~~~~~~~~~~~~~~
 -- Category Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Category (`CategoryName`, `Description`, `Image`)
+insert into Category (`CategoryName`, `Description`, `Image`, `IsDeleted`)
 values ('Cephalexin',
         'nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac',
-        'http://dummyimage.com/163x174.png/dddddd/000000'),
+        'http://dummyimage.com/163x174.png/dddddd/000000',
+        0),
        ('Acetaminophen',
         'diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus',
-        'http://dummyimage.com/118x120.png/5fa2dd/ffffff'),
+        'http://dummyimage.com/118x120.png/5fa2dd/ffffff',
+        0),
        ('Oxycodone',
         'quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate',
-        'http://dummyimage.com/156x102.png/5fa2dd/ffffff'),
+        'http://dummyimage.com/156x102.png/5fa2dd/ffffff',
+        0),
        ('Dextroamphetamine', 'odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede',
-        'http://dummyimage.com/115x190.png/dddddd/000000'),
+        'http://dummyimage.com/115x190.png/dddddd/000000',
+        0),
        ('LBEL EFFET PARFAIT',
         'elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis',
-        'http://dummyimage.com/153x178.png/dddddd/000000'),
+        'http://dummyimage.com/153x178.png/dddddd/000000',
+        0),
        ('BEAN', 'aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales',
-        'http://dummyimage.com/146x179.png/dddddd/000000'),
+        'http://dummyimage.com/146x179.png/dddddd/000000',
+        0),
        ('Ibuprofen', 'purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend',
-        'http://dummyimage.com/118x117.png/dddddd/000000'),
+        'http://dummyimage.com/118x117.png/dddddd/000000',
+        0),
        ('Gelato APF',
-        'sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis',
-        'http://dummyimage.com/160x137.png/ff4444/ffffff'),
+        'sed tristique in tempus sit amet sem fusce consequat',
+        'http://dummyimage.com/160x137.png/ff4444/ffffff',
+        0),
        ('Acetaminophen',
         'justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit',
-        'http://dummyimage.com/198x191.png/5fa2dd/ffffff'),
+        'http://dummyimage.com/198x191.png/5fa2dd/ffffff',
+        0),
        ('Sucralfate',
         'amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum',
-        'http://dummyimage.com/167x177.png/cc0000/ffffff');
+        'http://dummyimage.com/167x177.png/cc0000/ffffff',
+        0);
 
 -- ~~~~~~~~~~~~~~~~~~~
 -- Person Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`)
-values ('Joby', 'Klich', 'jklich0@networksolutions.com', '592-795-0203', '063 Heath Pass', 'Miyang', 2119),
-       ('Daniella', 'Elam', 'delam1@g.co', '697-761-8833', '6 Dakota Park', 'San Ignacio', 5299),
-       ('Ilse', 'Di Biasio', 'idibiasio2@narod.ru', '541-299-9159', '85141 Dixon Junction', 'Lugui', 4955),
-       ('Regina', 'Stute', 'rstute3@is.gd', '641-223-3043', '992 Anderson Point', 'Horokhiv', 1617),
-       ('Kellia', 'Roderigo', 'kroderigo4@zdnet.com', '295-824-7266', '8 Sachtjen Place', 'Monte Carmelo', 9700),
-       ('Olympe', 'Somers', 'osomers5@cafepress.com', '618-345-6740', '29 Little Fleur Terrace', 'Calceta', 4766),
-       ('Craig', 'Oxbe', 'coxbe6@digg.com', '526-911-4576', '96472 Ramsey Road', 'Pingqiao', 6372),
-       ('Kristal', 'Woakes', 'kwoakes7@omniture.com', '826-274-1476', '67 Ruskin Plaza', 'Gombong', 8588),
-       ('Ida', 'Studdeard', 'istuddeard8@oaic.gov.au', '319-860-1251', '16 Heffernan Alley', 'Lizhuangzi', 5852),
-       ('Izabel', 'Mozzi', 'imozzi9@go.com', '877-489-5225', '38509 Starling Center', 'Carrières-sur-Seine', 1182);
+insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`, `IsDeleted`)
+values ('Joby', 'Klich', 'jklich0@networksolutions.com', '592-795-0203', '063 Heath Pass', 'Miyang', 2119, 0),
+       ('Daniella', 'Elam', 'delam1@g.co', '697-761-8833', '6 Dakota Park', 'San Ignacio', 5299, 0),
+       ('Ilse', 'Di Biasio', 'idibiasio2@narod.ru', '541-299-9159', '85141 Dixon Junction', 'Lugui', 4955, 0),
+       ('Regina', 'Stute', 'rstute3@is.gd', '641-223-3043', '992 Anderson Point', 'Horokhiv', 1617, 0),
+       ('Kellia', 'Roderigo', 'kroderigo4@zdnet.com', '295-824-7266', '8 Sachtjen Place', 'Monte Carmelo', 9700, 0),
+       ('Olympe', 'Somers', 'osomers5@cafepress.com', '618-345-6740', '29 Little Fleur Terrace', 'Calceta', 4766, 0),
+       ('Craig', 'Oxbe', 'coxbe6@digg.com', '526-911-4576', '96472 Ramsey Road', 'Pingqiao', 6372, 0),
+       ('Kristal', 'Woakes', 'kwoakes7@omniture.com', '826-274-1476', '67 Ruskin Plaza', 'Gombong', 8588, 0),
+       ('Ida', 'Studdeard', 'istuddeard8@oaic.gov.au', '319-860-1251', '16 Heffernan Alley', 'Lizhuangzi', 5852, 0),
+       ('Izabel', 'Mozzi', 'imozzi9@go.com', '877-489-5225', '38509 Starling Center', 'Carrières-sur-Seine', 1182, 0);
 
 -- ~~~~~~~~~~~~~~~~~~~
 -- Employee Test Data
@@ -291,30 +303,7 @@ values (1, 6, 3, 31.83),
        (10, 1, 3, 5.64);
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- SELECT Statements
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- SELECT * FROM `Category`;
--- SELECT * FROM `Person`;
--- SELECT * FROM `Employee`;
--- SELECT * FROM `Customer`;
--- SELECT * FROM `Product`;
--- SELECT * FROM `Payment`;
--- SELECT * FROM `Order`;
--- SELECT * FROM `Order_Product`;
-
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- DELETE Statements
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
--- DELETE * FROM Order_Product;
--- DELETE * FROM Order;
--- DELETE * FROM Product;
--- DELETE * FROM Payment;
--- DELETE * FROM Customer;
--- DELETE * FROM Employee;
--- DELETE * FROM Person;
--- DELETE * FROM Category;
-
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- Procedures
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
