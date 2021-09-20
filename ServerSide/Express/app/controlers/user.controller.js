@@ -1,5 +1,6 @@
 const db = require ( "../models" );
 const {Op} = require ( "sequelize" );
+const bcrypt = require ( "bcrypt" );
 const Person = db.person;
 const Customer = db.customer;
 const Employee = db.employee;
@@ -48,7 +49,7 @@ exports.findOne = (req, res) => {
 exports.create = (req, res) => {
 
     // Validate request
-    if (!req.body.FirstName || !req.body.LastName || !req.body.Email || !req.query.AccountType) {
+    if (!req.body.FirstName || !req.body.LastName || !req.body.Email || !req.query.AccountType || !req.body.Password) {
         res.status ( 400 ).send ( {
             message: "Please fill all required fields"
         } );
@@ -56,12 +57,16 @@ exports.create = (req, res) => {
     }
     let accountType = req.query.AccountType;
     let role = req.query.Role || null;
+    const hashUsersPassword = async function () {
+        return await bcrypt.hash ( req.body.Password, 8 )
+    }
 
     // Create Person
     const person = {
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,
         Email: req.body.Email,
+        Password: hashUsersPassword (),
         Phone: req.body.Phone,
         Address: req.body.Address,
         City: req.body.City,
