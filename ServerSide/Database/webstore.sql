@@ -123,7 +123,7 @@ CALL makeWebstoreDB();
 -- ~~~~~~~~~~~~~~~~~~~
 -- Category Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Category (`CategoryName`, `Description`, `Image`, `IsDeleted`)
+insert into `Category` (`CategoryName`, `Description`, `Image`, `IsDeleted`)
 values ('Cephalexin',
         'nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac',
         'http://dummyimage.com/163x174.png/dddddd/000000',
@@ -165,17 +165,17 @@ values ('Cephalexin',
 -- ~~~~~~~~~~~~~~~~~~~
 -- Person Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into Person (`FirstName`, `LastName`, `Email`, `Phone`, `Address`, `City`, `PostCode`, `IsDeleted`)
-values ('Joby', 'Klich', 'jklich0@networksolutions.com', '592-795-0203', '063 Heath Pass', 'Miyang', 2119, 0),
-       ('Daniella', 'Elam', 'delam1@g.co', '697-761-8833', '6 Dakota Park', 'San Ignacio', 5299, 0),
-       ('Ilse', 'Di Biasio', 'idibiasio2@narod.ru', '541-299-9159', '85141 Dixon Junction', 'Lugui', 4955, 0),
-       ('Regina', 'Stute', 'rstute3@is.gd', '641-223-3043', '992 Anderson Point', 'Horokhiv', 1617, 0),
-       ('Kellia', 'Roderigo', 'kroderigo4@zdnet.com', '295-824-7266', '8 Sachtjen Place', 'Monte Carmelo', 9700, 0),
-       ('Olympe', 'Somers', 'osomers5@cafepress.com', '618-345-6740', '29 Little Fleur Terrace', 'Calceta', 4766, 0),
-       ('Craig', 'Oxbe', 'coxbe6@digg.com', '526-911-4576', '96472 Ramsey Road', 'Pingqiao', 6372, 0),
-       ('Kristal', 'Woakes', 'kwoakes7@omniture.com', '826-274-1476', '67 Ruskin Plaza', 'Gombong', 8588, 0),
-       ('Ida', 'Studdeard', 'istuddeard8@oaic.gov.au', '319-860-1251', '16 Heffernan Alley', 'Lizhuangzi', 5852, 0),
-       ('Izabel', 'Mozzi', 'imozzi9@go.com', '877-489-5225', '38509 Starling Center', 'Carrières-sur-Seine', 1182, 0);
+insert into Person (`FirstName`, `LastName`, `Email`, `Password`, `Phone`, `Address`, `City`, `PostCode`, `IsDeleted`)
+values ('Joby', 'Klich', 'jklich0@networksolutions.com', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '592-795-0203', '063 Heath Pass', 'Miyang', 2119, 0),
+       ('Daniella', 'Elam', 'delam1@g.co', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '697-761-8833', '6 Dakota Park', 'San Ignacio', 5299, 0),
+       ('Ilse', 'Di Biasio', 'idibiasio2@narod.ru', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '541-299-9159', '85141 Dixon Junction', 'Lugui', 4955, 0),
+       ('Regina', 'Stute', 'rstute3@is.gd', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '641-223-3043', '992 Anderson Point', 'Horokhiv', 1617, 0),
+       ('Kellia', 'Roderigo', 'kroderigo4@zdnet.com', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '295-824-7266', '8 Sachtjen Place', 'Monte Carmelo', 9700, 0),
+       ('Olympe', 'Somers', 'osomers5@cafepress.com', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '618-345-6740', '29 Little Fleur Terrace', 'Calceta', 4766, 0),
+       ('Craig', 'Oxbe', 'coxbe6@digg.com', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '526-911-4576', '96472 Ramsey Road', 'Pingqiao', 6372, 0),
+       ('Kristal', 'Woakes', 'kwoakes7@omniture.com', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '826-274-1476', '67 Ruskin Plaza', 'Gombong', 8588, 0),
+       ('Ida', 'Studdeard', 'istuddeard8@oaic.gov.au', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '319-860-1251', '16 Heffernan Alley', 'Lizhuangzi', 5852, 0),
+       ('Izabel', 'Mozzi', 'imozzi9@go.com', '$2y$10$hzTxLfuQt5lsr0qgjV.wzOIrezY9iJs.OGSfP2FVzBuYnQrphQQO2', '877-489-5225', '38509 Starling Center', 'Carrières-sur-Seine', 1182, 0);
 
 -- ~~~~~~~~~~~~~~~~~~~
 -- Employee Test Data
@@ -255,38 +255,38 @@ values (4, 4, 'pulvinar', 'nascetur',
 -- ~~~~~~~~~~~~~~~~~~~
 -- Order Test Data
 -- ~~~~~~~~~~~~~~~~~~~
-insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`,
-                     `IsDeleted`)
+insert into `Order` (`CustomerID`, `PaymentID`, `Status`, `OrderDate`, `ShippedDate`, `Comments`, `TrackingNumber`
+                     )
 values (3, 1, 'lorem', '2020-07-23', '2021-06-29',
         'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae',
-        '05f8e6d6-7ad9-44c8-af48-29626f412b97', 0),
+        '05f8e6d6-7ad9-44c8-af48-29626f412b97'),
        (2, 9, 'integer', '2020-12-29', '2020-08-16',
         'imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing',
-        '1e05f5a5-743d-4489-8611-b9f90f328081', 0),
+        '1e05f5a5-743d-4489-8611-b9f90f328081'),
        (2, 1, 'vulputate', '2020-10-21', '2021-01-11',
         'id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat',
-        'a95461b5-252c-4c85-8372-dae867df8e9e', 0),
+        'a95461b5-252c-4c85-8372-dae867df8e9e'),
        (5, 10, 'aenean', '2020-11-26', '2020-11-26',
         'nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget',
-        '321e54ad-ca71-437f-a92e-7cf6591d742a', 0),
+        '321e54ad-ca71-437f-a92e-7cf6591d742a'),
        (1, 10, 'a', '2020-11-04', '2021-05-09',
         'dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit',
-        '8e20eb10-c282-464b-bdef-57ceb9e7b7db', 0),
+        '8e20eb10-c282-464b-bdef-57ceb9e7b7db'),
        (1, 10, 'a', '2020-11-04', '2021-05-09',
         'dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit',
-        '8e20eb10-c282-464b-bdef-57ceb9e7b7db', 0),
+        '8e20eb10-c282-464b-bdef-57ceb9e7b7db'),
        (9, 8, 'condimentum', '2021-02-26', '2021-01-28',
         'turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at',
-        'b223bd27-bcba-4d87-9c46-ccf3dca21d46', 0),
-       (2, 6, 'ut', '2020-12-21', '2021-01-03', null, '0ae0bb95-8e7a-4cf6-ab8f-8fd2b1f37f49', 0),
+        'b223bd27-bcba-4d87-9c46-ccf3dca21d46'),
+       (2, 6, 'ut', '2020-12-21', '2021-01-03', null, '0ae0bb95-8e7a-4cf6-ab8f-8fd2b1f37f49'),
        (2, 10, 'sit', '2021-04-20', '2021-01-27',
         'pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit',
-        '2d09e1c6-59ff-42a6-92d0-954f32cf63ca', 0),
+        '2d09e1c6-59ff-42a6-92d0-954f32cf63ca'),
        (1, 9, 'lorem', '2020-08-11', '2021-06-25', 'nec dui luctus rutrum nulla tellus in sagittis dui vel nisl',
-        '3834c915-9bcf-4e10-8b6a-5209325f400d', 0),
+        '3834c915-9bcf-4e10-8b6a-5209325f400d'),
        (4, 7, 'tristique', '2020-10-26', '2020-10-17',
         'risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis',
-        'afabe505-1ba3-474e-be31-7c3c6cacfc9f', 0);
+        'afabe505-1ba3-474e-be31-7c3c6cacfc9f');
 
 -- ~~~~~~~~~~~~~~~~~~~
 -- Order_Product Test Data
@@ -306,5 +306,3 @@ values (1, 6, 3, 31.83),
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- Procedures
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
