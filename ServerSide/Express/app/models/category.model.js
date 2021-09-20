@@ -17,6 +17,10 @@ module.exports = function (sequelize, DataTypes) {
         Image: {
             type: DataTypes.STRING ( 100 ),
             allowNull: true
+        },
+        IsDeleted: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     }, {
         sequelize,

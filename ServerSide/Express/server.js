@@ -6,6 +6,7 @@ const db = require ( "./app/models" );
 
 //register view engine
 app.set ( 'view engine', 'ejs' );
+app.set ( 'views', path.join ( __dirname, 'views' ) )
 
 const corsOptions = {
     origin: "http://localhost:8081"
@@ -25,7 +26,7 @@ db.sequelize.sync ().then ( () => {
 } )
 
 app.get ( '/', (req, res) => {
-    res.render ( 'layout', { template: 'index' } );
+    res.render ( 'layout', {template: 'index'} );
 } )
 
 // Route handlers
