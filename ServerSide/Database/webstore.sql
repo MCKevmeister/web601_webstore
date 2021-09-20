@@ -86,6 +86,7 @@ CREATE TABLE Person
     FirstName varchar(255) NOT NULL,
     LastName  varchar(255) NOT NULL,
     Email     varchar(255) NOT NULL UNIQUE,
+    Password  binary(60) NOT NULL,
     Phone     varchar(255),
     Address   varchar(255),
     City      varchar(255),
