@@ -16,6 +16,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         Email: {
             type: DataTypes.STRING ( 255 ),
+            allowNull: false,
+            unique: "Email"
+        },
+        Password: {
+            type: DataTypes.BLOB,
             allowNull: false
         },
         Phone: {
@@ -33,6 +38,10 @@ module.exports = function (sequelize, DataTypes) {
         PostCode: {
             type: DataTypes.INTEGER,
             allowNull: true
+        },
+        IsDeleted: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     }, {
         sequelize,
@@ -45,6 +54,14 @@ module.exports = function (sequelize, DataTypes) {
                 using: "BTREE",
                 fields: [
                     {name: "PersonID"},
+                ]
+            },
+            {
+                name: "Email",
+                unique: true,
+                using: "BTREE",
+                fields: [
+                    {name: "Email"},
                 ]
             },
         ]

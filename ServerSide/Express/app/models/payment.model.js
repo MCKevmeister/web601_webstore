@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = function (sequelize, DataTypes) {
     return sequelize.define ( 'payment', {
         PaymentID: {
             autoIncrement: true,
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         Amount: {
             type: DataTypes.DECIMAL ( 13, 2 ),
-            allowNull: true
+            allowNull: false
         }
     }, {
         sequelize,

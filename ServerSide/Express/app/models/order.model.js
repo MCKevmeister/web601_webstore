@@ -41,10 +41,6 @@ module.exports = function (sequelize, DataTypes) {
         TrackingNumber: {
             type: DataTypes.STRING ( 255 ),
             allowNull: true
-        },
-        IsDeleted: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
         }
     }, {
         sequelize,

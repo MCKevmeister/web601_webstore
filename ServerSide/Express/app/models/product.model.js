@@ -72,7 +72,7 @@ module.exports = function (sequelize, DataTypes) {
                 ]
             },
             {
-                name: "FKProduct837757",
+                name: "FKProduct608764",
                 using: "BTREE",
                 fields: [
                     {name: "CategoryID"},
