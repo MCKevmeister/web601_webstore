@@ -1,13 +1,10 @@
 const express = require ( "express" );
 const bodyParser = require ( "body-parser" );
 const cors = require ( "cors" );
-const app = express ();
+const path = require ( 'path' );
+
 const db = require ( "./app/models" );
-
-//register view engine
-app.set ( 'view engine', 'ejs' );
-app.set ( 'views', path.join ( __dirname, 'views' ) )
-
+const app = express ();
 const corsOptions = {
     origin: "http://localhost:8081"
 };
@@ -20,6 +17,10 @@ app.use ( bodyParser.json () );
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use ( bodyParser.urlencoded ( {extended: true} ) );
 
+// register view engine
+app.set ( 'view engine', 'ejs' );
+app.set ( 'views', path.join ( __dirname, 'views' ) )
+
 // sync sequelize models with database
 db.sequelize.sync ().then ( () => {
     console.log ( "Sync with DB" )
@@ -30,10 +31,10 @@ app.get ( '/', (req, res) => {
 } )
 
 // Route handlers
-require ( "./app/routes/product.routes" ) ( app );
-require ( "./app/routes/category.routes" ) ( app );
-require ( "./app/routes/user.routes" ) ( app );
-require ( "./app/routes/order.routes" ) ( app );
+app.use ( require ( "./app/routes/product.routes" ) );
+app.use ( require ( "./app/routes/category.routes" ) );
+app.use ( require ( "./app/routes/user.routes" ) );
+app.use ( require ( "./app/routes/order.routes" ) );
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
