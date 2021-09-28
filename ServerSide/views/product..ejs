@@ -1,0 +1,64 @@
+<html>
+<body>
+<nav>
+    <a class="nav_links" href="/account">Account</a>
+    <a class="nav_links" href="/order">Order</a>
+    <a class="nav_links" href="/product">Product</a>
+    <a class="nav_links" href="/category">category</a>
+</nav>
+<div>
+    <h2>Products</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ProductID</th>
+            <th>CategoryID</th>
+            <th>LastModifiedBy</th>
+            <th>ProductName</th>
+            <th>Manufacturer</th>
+            <th>Description</th>
+            <th>QtyInStock</th>
+            <th>Price</th>
+            <th>MSRP</th>
+            <th>Image</th>
+            <th>LastModifiedDate</th>
+            <th>IsAvailable</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% products.forEach ( function (product) { %>
+        <tr>
+            <td><% product.ProductID %></td>
+            <td><% product.CategoryID %></td>
+            <td><% product.LastModifiedBy %></td>
+            <td><% product.ProductName %></td>
+            <td><% product.Manufacturer %></td>
+            <td><% product.Description %></td>
+            <td><% product.QtyInStock %></td>
+            <td><% product.Price %></td>
+            <td><% product.MSRP %></td>
+            <td><% product.Image %></td>
+            <td><% product.LastModifiedDate %></td>
+            <td><% product.IsAvailable %></td>
+            <td>
+                <form action="/app/routes/product.routes.js" method="Get">
+                    <input type="text" placeholder="Edit product" />
+                </form>
+                <button onclick=>Delete</button>
+                <form action="/product/<% product.ProductID%>" method="DELETE">
+                    <input type="submit" placeholder="Delete product" />
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+        </tbody>
+
+    </table>
+    <% products.count%>
+    <form action="/product/" method="POST">
+        <input type="submit" placeholder="Create product" />
+    </form>
+</div>
+</body>
+</html>

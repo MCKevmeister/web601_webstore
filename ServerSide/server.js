@@ -27,14 +27,26 @@ db.sequelize.sync ().then ( () => {
 } )
 
 app.get ( '/', (req, res) => {
-    res.render ( 'layout', {template: 'index'} );
+    res.render ( 'index' );
+} )
+
+app.get ( '/product', (req, res) => {
+    res.render ( 'product' );
+} )
+
+app.get ( '/account', (req, res) => {
+    res.render ( 'account' );
+} )
+
+app.get ( '/category', (req, res) => {
+    res.render ( 'category' );
 } )
 
 // Route handlers
-app.use ( require ( "./app/routes/product.routes" ) );
-app.use ( require ( "./app/routes/category.routes" ) );
-app.use ( require ( "./app/routes/user.routes" ) );
-app.use ( require ( "./app/routes/order.routes" ) );
+app.use ( '/product', require ( "./app/routes/product.routes" ) );
+app.use ( '/category', require ( "./app/routes/category.routes" ) );
+app.use ( '/user', require ( "./app/routes/user.routes" ) );
+app.use ( '/order', require ( "./app/routes/order.routes" ) );
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

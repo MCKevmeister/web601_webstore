@@ -1,0 +1,54 @@
+<html>
+<body>
+<nav>
+    <a class="nav_links" href="/account">Account</a>
+    <a class="nav_links" href="/order">Order</a>
+    <a class="nav_links" href="/product">Product</a>
+    <a class="nav_links" href="/category">category</a>
+</nav>
+<div>
+    <h2>Order</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerID</th>
+            <th>PaymentID</th>
+            <th>Status</th>
+            <th>OrderDate</th>
+            <th>ShippedDate</th>
+            <th>Comments</th>
+            <th>TrackingNumber</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% orders.forEach ( function (order) { %>
+            <tr>
+                <td><% order.OrderID %></td>
+                <td><% order.CustomerID %></td>
+                <td><% order.PaymentID %></td>
+                <td><% order.Status %></td>
+                <td><% order.OrderDate %></td>
+                <td><% order.ShippedDate %></td>
+                <td><% order.Comments %></td>
+                <td><% order.TrackingNumber %></td>
+                <td>
+                    <form action="/order" method="PUT">
+                        <input type="text" placeholder="Edit order" />
+                    </form>
+                    <form action="/order/<% order.OrderID%>" method="DELETE">
+                        <input type="submit" placeholder="Delete order" />
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+        </tbody>
+
+    </table>
+    <% orders.count%>
+    <form action="/order/" method="POST">
+        <input type="submit" placeholder="Create order" />
+    </form>
+</div>
+</body>
+</html>

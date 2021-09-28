@@ -1,0 +1,48 @@
+<html>
+<body>
+<nav>
+    <a class="nav_links" href="/account">Account</a>
+    <a class="nav_links" href="/order">Order</a>
+    <a class="nav_links" href="/product">Product</a>
+    <a class="nav_links" href="/category">category</a>
+</nav>
+<div>
+    <h2>Category</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>CategoryID</th>
+            <th>CategoryName</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>IsDeleted</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% category.forEach ( function (category) { %>
+            <tr>
+                <td><% category.CategoryID %></td>
+                <td><% category.CategoryName %></td>
+                <td><% category.Description %></td>
+                <td><% category.Image %></td>
+                <td><% category.IsDeleted %></td>
+                <td>
+                    <form action="/category" method="PUT">
+                        <input type="submit" placeholder="Edit category" />
+                    </form>
+                    <form action="/product/<% category.CategoryID%>" method="DELETE">
+                        <input type="submit" placeholder="Delete category" />
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+        </tbody>
+
+    </table>
+    <% products.count%>
+    <form action="/category/" method="POST">
+        <input type="submit" placeholder="Create category" />
+    </form>
+</div>
+</body>
+</html>
