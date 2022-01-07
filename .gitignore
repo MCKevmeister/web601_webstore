@@ -34,3 +34,4 @@ npm-debug.log
 .env
 /ServerSide/Express/.idea/
 .idea
+/ServerSide/package-lock.json
