@@ -60,3 +60,15 @@ This class project involves creating a web api with express.js that will have a 
 - [sequelize-auto](https://github.com/sequelize/sequelize-auto)
   - Generation of sequelize models
 ---
+  
+## Conclusion
+
+Since Javascript is difficult and at times confusing to read I would never use it again if possible.
+
+React documentation isn't clear and provides several ways of doing the same thing yet not defining any best practice. There is not a defined way to do anything, it seems to be a choose your own adventure towards issues that are not documented at all.
+
+For a new developer with no experience in react it makes it difficult to start.
+
+React router doesn't work and trying to go to the source documentation leads to a GitHub repository that isn't available, so to find 
+
+Without being taught how to use React by taking a NMIT course on learning to react it makes it nigh on impossible to write an app in react. I don't want to use React anymore as it is not easy or developer friendly.
