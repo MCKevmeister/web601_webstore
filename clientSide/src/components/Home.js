@@ -4,11 +4,16 @@ import ItemList from './ItemList'
 
 function Home() {
     return (
-    <>
-        <CategoryList />
-        <Search />
-        <ItemList />
-    </>
+        <div>
+            <div className="w-1/4">
+                <CategoryList />
+            </div>
+            <div>
+                <Search />
+                <ItemList />
+            </div>
+        </div>
+
     )
 }
 

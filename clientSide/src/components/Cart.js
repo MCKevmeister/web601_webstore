@@ -1,22 +1,22 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 
-const products = [
-    {
-        id: 1,
-        name: 'Throwback Hip Bag',
-        href: '#',
-        color: 'Salmon',
-        price: '$90.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-        imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-    },
-]
+// const products = [
+//     {
+//         id: 1,
+//         name: 'Throwback Hip Bag',
+//         href: '#',
+//         color: 'Salmon',
+//         price: '$90.00',
+//         quantity: 1,
+//         imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+//         imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+//     },
+// ]
+const products = [{}]
 
-export default function Example() {
+export default function Cart() {
     const [open, setOpen] = useState(true)
 
     return (
@@ -64,7 +64,7 @@ export default function Example() {
 
                                         <div className="mt-8">
                                             <div className="flow-root">
-                                                <ul role="list" className="-my-6 divide-y divide-gray-200">
+                                                <ul className="my-6 divide-y divide-gray-200">
                                                     {products.map((product) => (
                                                         <li key={product.id} className="py-6 flex">
                                                             <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
