@@ -1,9 +1,9 @@
 import LimitedItemDetail from "./LimitedItemDetail";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 function ItemList() {
 
-    const [items, setItems] =useState([]);
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
         return () => {
