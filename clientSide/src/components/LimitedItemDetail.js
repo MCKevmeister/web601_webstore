@@ -2,7 +2,7 @@ import {Component} from "react";
 
 export default class LimitedItemDetail extends Component {
     render() {
-        let {itemName, itemDescription, itemPrice, itemID} = this.props;
+        let {itemName, itemDescription, itemPrice} = this.props;
         const handleClick = () => {
             //TODO add to cart
         };

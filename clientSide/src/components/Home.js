@@ -5,8 +5,8 @@ import ItemList from './ItemList'
 function Home() {
     return (
     <>
-    {/*     <CategoryList />*/}
-    {/*    <Search />*/}
+        <CategoryList />
+        <Search />
         <ItemList />
     </>
     )
